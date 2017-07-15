@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build && npm run watch",
     "build": "npm run build-ts && npm run tslint",
-    "deploy": "npm run build && cp package.json functions && cd functions && yarn install && cd ../ && firebase deploy --only functions",
+    "deploy": "npm run build && cp package.json functions && cd functions && yarn install && cd ../ && firebase deploy --only functions --project staging",
     "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\"  \"npm run watch-ts\" \"nodemon dist/index.js\"",
     "test": "jest --forceExit",
     "build-ts": "tsc",
@@ -16,16 +16,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chai": "^3.5.0",
-    "concurrently": "^3.4.0",
     "firebase-admin": "^5.0.0",
-    "firebase-functions": "^0.5.7"
+    "firebase-functions": "^0.5.7",
+    "mailgun-js": "^0.11.2"
   },
   "devDependencies": {
     "@types/chai": "^3.5.2",
     "@types/jest": "^19.2.2",
     "@types/node": "^7.0.12",
     "chai": "^3.5.0",
+    "firebase-tools": "^3.9.1",
     "jest": "^19.0.2",
     "nodemon": "^1.11.0",
     "shelljs": "^0.7.7",
